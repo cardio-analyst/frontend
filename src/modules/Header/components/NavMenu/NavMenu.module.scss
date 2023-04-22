@@ -1,0 +1,18 @@
+.wrapper {
+  position: relative;
+  height: 100%;
+
+  ul {
+    background: transparent !important;
+    border-bottom: none !important;
+    height: 100%;
+
+    li {
+      display: flex !important;
+      align-items: center !important;
+      color: #ffffff !important;
+    }
+  }
+
+
+}

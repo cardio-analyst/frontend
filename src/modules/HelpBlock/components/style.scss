@@ -1,0 +1,195 @@
+@import "../../../utils/shared";
+
+.common-table-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  margin-top: 24px;
+
+  .left-section {
+    flex-shrink: 0;
+    width: 270px;
+    height: calc(100vh - 100px);
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 2px;
+    }
+
+    &::-webkit-scrollbar-track {
+      -webkit-border-radius: 2px;
+      border-radius: 2px;
+      background: #DEE3ED;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      -webkit-border-radius: 2px;
+      border-radius: 2px;
+      background: #8F96A3;
+    }
+
+    > .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-selected {
+      background-color: transparent;
+      color: $blue4;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      &::after {
+        display: none;
+      }
+    }
+    > .ant-menu:not(.ant-menu-horizontal) .ant-menu-item-active {
+      background-color: transparent;
+      color: $blue4;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      &::after {
+        display: none;
+      }
+    }
+    > .ant-menu:not(.ant-menu-horizontal) .ant-menu-item {
+      background-color: transparent;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      &::after {
+        display: none;
+      }
+    }
+    > .ant-menu-submenu:not(.ant-menu-submenu-horizontal) {
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 20px;
+      &::after {
+        display: none;
+      }
+    }
+    > .ant-menu {
+      background-color: transparent;
+      > .ant-menu-submenu {
+        background-color: transparent;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 20px;
+        &.ant-menu-submenu-selected {
+          color: $primary-color;
+        }
+        >.ant-menu-submenu-title:hover {
+          color: $head-color;
+          >.ant-menu-submenu-arrow::before {
+            background: linear-gradient(to right, $head-color, $head-color);
+          }
+          >.ant-menu-submenu-arrow::after {
+            background: linear-gradient(to right, $head-color, $head-color);
+          }
+        }
+        > .ant-menu {
+          background-color: transparent;
+        }
+      }
+    }
+
+  }
+
+  .right-section {
+    margin-left: 40px;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+
+    white-space: break-spaces;
+
+    .help-title {
+      // color: #1890ff;
+      font-weight: 500;
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .help-subtitle {
+      font-weight: 500;
+      font-size: 16px;
+      margin-bottom: 24px;
+      margin-top: 31px;
+    }
+
+    .help-divider {
+      width: 100%;
+      height: 1px;
+      margin-top: 36px;
+      // background-color: $ultralight-grey-color;
+    }
+
+    .help-description {
+      font-size: 16px;
+    }
+
+    .help-colors-description {
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+
+    .help-wrap {
+      display: table;
+    }
+
+    .help-calculator {
+      font-size: 16px;
+    }
+
+    .help-colors {
+      display: flex;
+      // width: 100%;
+      justify-content: space-between;
+
+      .help-colors-label {
+        box-sizing: border-box;
+        padding: 5px;
+        min-width: 200px;
+      }
+      .help-colors-color {
+        padding: 4px 16px;
+        text-align: center;
+        min-width: 100px;
+        border-radius: 24px;
+      }
+
+      .danger {
+        background: #fff6f7;
+        color: $status-red-color;
+      }
+
+      .warning {
+        background: #fffdec;
+        color: $status-orange-color;
+      }
+
+      .success {
+        background: #edffec;
+        color: $status-green-color;
+      }
+
+      .blue {
+        background: #f3f6fe;
+        color: $status-blue-color;
+      }
+
+      .default {
+        background: #f5f5f5;
+      }
+    }
+
+    .ant-divider {
+      span {
+        font-size: $font-size-def;
+        color: #1890ff;
+      }
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

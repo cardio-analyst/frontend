@@ -1,0 +1,17 @@
+@import "../../../../utils/shared";
+
+.loginFormContainer {
+  padding: 36px;
+  border: 1px solid $primary-color;
+  border-radius: 20px;
+
+  .title {
+    color: $primary-color;
+  }
+
+  .submitBlock {
+    .error {
+      color: $status-red-color;
+    }
+  }
+}

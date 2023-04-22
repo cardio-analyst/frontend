@@ -1,0 +1,24 @@
+.common-table-container .right-section .ant-divider span {
+  color: #8F96A3;
+}
+
+.help-content-container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  .help-content-container-label {
+    font-size: 16px;
+    color: #8F96A3;
+    width: 160px;
+  }
+  .help-content-container-value {
+  }
+}
+
+.help-wrap-colors {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 8px;
+}

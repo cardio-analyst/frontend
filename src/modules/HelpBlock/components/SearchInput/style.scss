@@ -1,0 +1,29 @@
+@import "../../../../utils/shared";
+
+.search_input_wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: right;
+
+  .search_input {
+    width: 645px;
+
+    .ant-input-affix-wrapper {
+      border-radius: 25px;
+      height: 36px;
+
+      .ant-input {
+        border-radius: unset;
+        height: unset;
+      }
+
+      .ant-input-suffix {
+        span {
+          font-size: $font-size-def;
+        }
+      }
+    }
+  }
+
+}
+
