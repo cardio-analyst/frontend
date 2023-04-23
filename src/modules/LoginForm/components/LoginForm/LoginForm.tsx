@@ -8,7 +8,7 @@ import { EyeOutlined, EyeInvisibleOutlined } from '../../icons';
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
 import { signInCreator } from '../../store/authCreators';
 import { useNavigate } from 'react-router-dom';
-import { routes } from 'hoc/MainLayout';
+import { routes } from 'routes';
 
 import styles from './LoginForm.module.scss';
 

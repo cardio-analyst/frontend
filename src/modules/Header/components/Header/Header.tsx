@@ -1,31 +1,29 @@
-import React, { useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 
 import { Button } from 'antd';
 import NavMenu, { NavItem } from '../NavMenu/NavMenu';
 import { Logout, Logo } from '../../icons';
 
-import { routes } from 'hoc/MainLayout/constants/routes';
+import { routes } from 'routes';
 
 import styles from './Header.module.scss';
-import { useAppDispatch } from 'hooks/useAppDispatch';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { profileSelector } from '../../store/profileSelector';
 import { deleteCookie } from 'utils/cookie';
-import { getProfileInfo } from '../../store/profileCreators';
-
-const menuItems: NavItem[] = [
-    {
-        label: 'Справка',
-        key: routes.help,
-    },
-    {
-        label: 'Пользователи',
-        key: routes.users,
-    },
-];
 
 export const Header = () => {
     const { profile } = useAppSelector(profileSelector);
+
+    const menuItems: NavItem[] = [
+        {
+            label: 'Справка',
+            key: routes.help,
+        },
+        {
+            label: 'Пользователи',
+            key: routes.users,
+        },
+    ];
 
     const onLogout = () => {
         deleteCookie('accessToken');

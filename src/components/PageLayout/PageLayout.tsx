@@ -9,13 +9,11 @@ interface PageLayoutProps {
 
 export const PageLayout: React.FC<PageLayoutProps> = ({
     title,
-    children,
-    headerChildren,
+    children
 }) => (
     <div className={styles.container}>
         <div className={styles.header}>
             <h2>{title}</h2>
-            {headerChildren}
         </div>
         {children}
     </div>
