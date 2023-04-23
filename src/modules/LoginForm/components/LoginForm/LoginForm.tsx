@@ -30,11 +30,13 @@ export const LoginForm = () => {
     const [form] = Form.useForm();
 
     const onFinish = ({ login, password }: FormData) => {
-        dispatch(signInCreator({ loginOrEmail: login, password: password }))
-            .unwrap()
-            .then(() => {
-                navigation(routes.help);
-            });
+        dispatch(
+            signInCreator({
+                loginOrEmail: login,
+                password: password,
+                onSuccess: () => navigation(routes.help),
+            }),
+        );
     };
 
     return (

@@ -15,51 +15,31 @@ class ApiClient implements IApiClient {
         payload: TRequest,
         config?: RequestConfig,
     ): Promise<TResponse> {
-        try {
-            const response = config
-                ? await this.client.post<TResponse>(path, payload, config)
-                : await this.client.post<TResponse>(path, payload);
-            return response.data;
-        } catch (error) {
-            // handleServiceError(error);
-        }
-        return {} as TResponse;
+        const response = config
+            ? await this.client.post<TResponse>(path, payload, config)
+            : await this.client.post<TResponse>(path, payload);
+        return response.data;
     }
 
     async patch<TRequest, TResponse>(
         path: string,
         payload: TRequest,
     ): Promise<TResponse> {
-        try {
-            const response = await this.client.patch<TResponse>(path, payload);
-            return response.data;
-        } catch (error) {
-            // handleServiceError(error);
-        }
-        return {} as TResponse;
+        const response = await this.client.patch<TResponse>(path, payload);
+        return response.data;
     }
 
     async put<TRequest, TResponse>(
         path: string,
         payload: TRequest,
     ): Promise<TResponse> {
-        try {
-            const response = await this.client.put<TResponse>(path, payload);
-            return response.data;
-        } catch (error) {
-            // handleServiceError(error);
-        }
-        return {} as TResponse;
+        const response = await this.client.put<TResponse>(path, payload);
+        return response.data;
     }
 
     async get<TResponse>(path: string): Promise<TResponse> {
-        try {
-            const response = await this.client.get<TResponse>(path);
-            return response.data;
-        } catch (error) {
-            // handleServiceError(error);
-        }
-        return {} as TResponse;
+        const response = await this.client.get<TResponse>(path);
+        return response.data;
     }
 }
 

@@ -7,7 +7,7 @@ import styles from './layouts.module.scss';
 const { Content } = Layout;
 
 const PrivateLayout: React.FC<PropsWithChildren> = () => (
-    <Layout>
+    <Layout className={styles.layout}>
         <Header />
         <Content className={styles.content}>
             <Outlet />
