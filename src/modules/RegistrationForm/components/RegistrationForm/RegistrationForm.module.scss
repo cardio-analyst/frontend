@@ -1,0 +1,44 @@
+@import "../../../../utils/shared";
+
+.sizeForm {
+  width: 800px;
+
+
+  .regFormContainer {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+  }
+
+  .steps {
+    width: 40%;
+  }
+
+  .currentStep {
+    height: 100%;
+    width: 55%;
+  }
+}
+
+.stepTwoContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  & > div:nth-child(-n + 4) {
+    width: 45%;
+  }
+}
+
+.btnContainer {
+  display: flex;
+  margin-top: auto;
+}
+
+.btnGoBack {
+  color: $secondary-color;
+
+  &:hover {
+    color: $black-color;
+  }
+}

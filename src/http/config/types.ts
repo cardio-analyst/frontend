@@ -31,3 +31,8 @@ export interface IApiClient {
     put<TRequest, TResponse>(path: string, object: TRequest): Promise<TResponse>;
     get<TResponse>(path: string): Promise<TResponse>;
 }
+
+export interface TokenResponse {
+    accessToken: string;
+    refreshToken: string;
+}

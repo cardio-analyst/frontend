@@ -3,7 +3,6 @@ import { Form, Typography, Button, Input } from 'antd';
 
 import { useAppSelector } from 'hooks/useAppSelector';
 import { authSelector } from '../../store/authSelector';
-import { EyeOutlined, EyeInvisibleOutlined } from '../../icons';
 
 import { useAppDispatch } from '../../../../hooks/useAppDispatch';
 import { signInCreator } from '../../store/authCreators';
@@ -12,7 +11,10 @@ import { routes } from 'routes';
 
 import styles from './LoginForm.module.scss';
 
-const { Title, Paragraph } = Typography;
+import { InputPassword } from 'components/InputPassword';
+import { FormContainer } from 'components/FormContainer';
+
+const { Paragraph } = Typography;
 
 const REQUIRED_FIELD_TEXT = 'Поле обязательно к заполнению';
 
@@ -39,15 +41,16 @@ export const LoginForm = () => {
         );
     };
 
+    const redirectToRegister = () => navigation(routes.registration);
+
     return (
-        <div className={styles.loginFormContainer}>
-            <Title level={3} className={styles.title}>
-                Cardio Analytics Admin
-            </Title>
+        <FormContainer
+            title='Авторизация'
+            wrapperClassName={styles.sizeForm}
+        >
             <Form
                 name='login'
                 form={form}
-                className={styles.form}
                 onFinish={onFinish}
             >
                 <Form.Item
@@ -75,20 +78,14 @@ export const LoginForm = () => {
                         },
                     ]}
                 >
-                    <Input.Password
-                        placeholder='Введите пароль'
-                        disabled={isLoading}
-                        iconRender={(visible) =>
-                            visible ? <EyeOutlined /> : <EyeInvisibleOutlined />
-                        }
-                    />
+                    <InputPassword placeholder='Введите пароль' />
                 </Form.Item>
+                {error && (
+                    <Paragraph className={styles.error}>
+                        Неправильный логин и/или пароль
+                    </Paragraph>
+                )}
                 <div className={styles.submitBlock}>
-                    {error && (
-                        <Paragraph className={styles.error}>
-                            Неправильный логин и/или пароль
-                        </Paragraph>
-                    )}
                     <Button
                         type='primary'
                         htmlType='submit'
@@ -96,8 +93,16 @@ export const LoginForm = () => {
                     >
                         Войти
                     </Button>
+                    <Button
+                        type='ghost'
+                        disabled={isLoading}
+                        className={styles.registerBtn}
+                        onClick={redirectToRegister}
+                    >
+                        Регистрация
+                    </Button>
                 </div>
             </Form>
-        </div>
+        </FormContainer>
     );
 };

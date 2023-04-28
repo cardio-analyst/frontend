@@ -13,7 +13,3 @@ export interface TokenResponse {
     accessToken: string;
     refreshToken: string;
 }
-
-export interface RefreshTokenRequest {
-    refreshToken: string;
-}
