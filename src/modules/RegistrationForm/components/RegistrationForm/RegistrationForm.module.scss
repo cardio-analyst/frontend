@@ -28,6 +28,10 @@
   & > div:nth-child(-n + 4) {
     width: 45%;
   }
+
+  .errorBlock {
+    width: 100% !important;
+  }
 }
 
 .btnContainer {
@@ -41,4 +45,8 @@
   &:hover {
     color: $black-color;
   }
+}
+
+.errorBlock {
+  margin-bottom: 15px;
 }

@@ -8,7 +8,7 @@ export const RegistrationStepThree = () => (
         <Form.Item
             labelCol={{ span: 24 }}
             label='Секретный ключ'
-            name='"secretKey'
+            name='secretKey'
             rules={[
                 {
                     required: true,
@@ -19,4 +19,4 @@ export const RegistrationStepThree = () => (
             <Input placeholder='Ввведите секретный ключ' />
         </Form.Item>
     </>
-)
+);

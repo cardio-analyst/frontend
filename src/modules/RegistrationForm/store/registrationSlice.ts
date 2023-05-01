@@ -1,7 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { ErrorApp } from 'http/config/types';
 import { signUpCreator } from './registrationCreators';
-import { InitialStateRegistration } from './registrationTypes';
+import {
+    InitialStateRegistration,
+    RegistrationErrors,
+} from './registrationTypes';
 
 const initialState: InitialStateRegistration = {
     isLoading: false,
@@ -22,7 +25,7 @@ export const registrationSlice = createSlice({
         },
         [signUpCreator.rejected.type]: (
             state,
-            action: PayloadAction<ErrorApp>,
+            action: PayloadAction<ErrorApp<RegistrationErrors>>,
         ) => {
             state.error = action.payload;
             state.isLoading = false;

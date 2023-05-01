@@ -3,4 +3,5 @@ export const routes = {
     registration: '/registration',
     help: '/help',
     users: '/users',
+    reviews: '/reviews',
 }

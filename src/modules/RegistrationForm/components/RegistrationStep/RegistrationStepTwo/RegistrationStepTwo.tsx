@@ -2,9 +2,9 @@ import React from 'react';
 import { DatePicker, Form, Input } from 'antd';
 import styles from './RegistrationStepTwo.module.scss';
 import { SelectRegion } from 'components/SelectRegion/SelectRegion';
+import dayjs from 'dayjs';
 
 const REQUIRED_FIELD_TEXT = 'Поле обязательно к заполнению';
-
 
 export const RegistrationStepTwo = () => (
     <>
@@ -50,6 +50,7 @@ export const RegistrationStepTwo = () => (
                 placeholder='01.12.1970'
                 format='DD.MM.YYYY'
                 className={styles.birthDay}
+                disabledDate={(d) => !d || d.isAfter(dayjs())}
             />
         </Form.Item>
         <Form.Item

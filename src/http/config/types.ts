@@ -1,12 +1,13 @@
-export enum ErrorEnum {
+export enum ErrorGlobalEnum {
     AccessTokenExpired = 'AccessTokenExpired',
     RefreshTokenExpired = 'RefreshTokenExpired',
     WrongRefreshToken = 'WrongRefreshToken',
     PNotAllowed = 'IPNotAllowed',
+    InternalError = 'InternalError',
 }
 
-export interface ErrorApp {
-    error: ErrorEnum
+export interface ErrorApp<T = ErrorGlobalEnum> {
+    error: T & ErrorGlobalEnum;
     description: string
 }
 

@@ -18,7 +18,7 @@ export const RegistrationStepOne = () => (
                 {
                     pattern: /^[^@]+$/g,
                     message: 'В строке должен отсутствовать символ @',
-                }
+                },
             ]}
         >
             <Input placeholder='Введите логин' />
@@ -59,4 +59,4 @@ export const RegistrationStepOne = () => (
             <InputPassword placeholder='Введите пароль' />
         </Form.Item>
     </>
-)
+);

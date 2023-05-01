@@ -1,3 +1,3 @@
 import { RootState } from 'store';
 
-export const registrationSelector = (state: RootState) => state.authReducer;
+export const registrationSelector = (state: RootState) => state.registrationReducer;

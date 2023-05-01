@@ -14,6 +14,7 @@ const PrivateLayout = React.lazy(
 
 const UsersPage = lazy(() => import('pages/Users/UsersPage'));
 const HelpPage = lazy(() => import('pages/Help/HelpPage'));
+const ReviewsPage = lazy(() => import('pages/Reviews/ReviewsPage'));
 
 const LoginPage = lazy(() => import('pages/Login/Login'));
 const RegistrationPage = lazy(() => import('pages/Registration/Registration'));
@@ -40,6 +41,7 @@ export const Root = () => (
             >
                 <Route path={routes.users} element={<UsersPage />} />
                 <Route path={routes.help} element={<HelpPage />} />
+                <Route path={routes.reviews} element={<ReviewsPage />} />
                 <Route path="*" element={<ErrorPage />} />
             </Route>
         </Routes>
