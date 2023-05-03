@@ -1,33 +1,39 @@
 import React, { useMemo } from 'react';
-import { Review } from '../../model/Review';
+import { Feedback } from '../../model/Feedback';
 import { Modal, Rate, Typography } from 'antd';
-import styles from './ModalReview.module.scss';
+import styles from './ModalFeedback.module.scss';
+import dayjs from 'dayjs';
+import { formatCreatedDate } from '../../constants/feedback';
 
 const { Title, Paragraph, Text } = Typography;
 
 interface ModalReviewProps {
     isModalOpen: boolean;
     handleOk: () => void;
-    review?: Review;
+    feedback?: Feedback;
 }
 
-export const ModalReview: React.FC<ModalReviewProps> = ({
-    review,
+export const ModalFeedback: React.FC<ModalReviewProps> = ({
+    feedback,
     isModalOpen,
     handleOk,
 }) => {
-    console.log('REVIEW', review);
     const fullName = useMemo(() => {
-        return `${review?.firstName} ${review?.lastName} ${review?.middleName}`;
-    }, [review?.firstName, review?.lastName, review?.middleName]);
+        return `${feedback?.userFirstName} ${feedback?.userLastName} ${feedback?.userMiddleName}`;
+    }, [
+        feedback?.userFirstName,
+        feedback?.userLastName,
+        feedback?.userMiddleName,
+    ]);
 
     return (
         <Modal
             open={isModalOpen}
-            width={700}
+            width={800}
             closable={false}
             onOk={handleOk}
             cancelButtonProps={{ style: { display: 'none' } }}
+            okButtonProps={{style: {width: '15%'}}}
         >
             <div className={styles.modalContainer}>
                 <div>
@@ -36,16 +42,22 @@ export const ModalReview: React.FC<ModalReviewProps> = ({
                 </div>
                 <div className={styles.info}>
                     <Title level={5}>Почта</Title>
-                    <Text>{review?.email}</Text>
+                    <Text>{feedback?.userEmail}</Text>
                 </div>
                 <div className={styles.info}>
                     <Title level={5}>Логин</Title>
-                    <Text>{review?.login}</Text>
+                    <Text>{feedback?.userLogin}</Text>
+                </div>
+                <div className={styles.info}>
+                    <Title level={5}>Дата написания</Title>
+                    <Text>
+                        {dayjs(feedback?.createdAt).format(formatCreatedDate)}
+                    </Text>
                 </div>
                 <div className={styles.info}>
                     <Title level={5}>Оценка</Title>
                     <Text>
-                        <Rate disabled value={review?.mark} />
+                        <Rate disabled value={feedback?.mark} />
                     </Text>
                 </div>
                 <div className={styles.info}>
@@ -57,7 +69,7 @@ export const ModalReview: React.FC<ModalReviewProps> = ({
                             symbol: 'Показать',
                         }}
                     >
-                        {review?.message}
+                        {feedback?.message}
                     </Paragraph>
                 </div>
             </div>

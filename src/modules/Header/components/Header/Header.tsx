@@ -25,7 +25,7 @@ export const Header = () => {
         },
         {
             label: 'Отзывы',
-            key: routes.reviews,
+            key: routes.feedbacks,
         },
     ];
 

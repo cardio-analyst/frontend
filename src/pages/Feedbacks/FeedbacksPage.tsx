@@ -1,11 +1,11 @@
 import React from 'react';
 import { PageLayout } from 'components/PageLayout';
-import { Reviews } from 'modules/Reviews';
+import { Feedbacks } from 'modules/Feedbacks';
 
-const ReviewsPage = () => (
+const FeedbacksPage = () => (
     <PageLayout title='Отзывы'>
-        <Reviews />
+        <Feedbacks />
     </PageLayout>
 );
 
-export default ReviewsPage;
+export default FeedbacksPage;

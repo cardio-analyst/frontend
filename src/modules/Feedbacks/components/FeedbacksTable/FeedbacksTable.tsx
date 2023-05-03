@@ -1,14 +1,14 @@
-import React, { HTMLAttributes, TdHTMLAttributes } from 'react';
+import React from 'react';
 import { Table } from 'antd';
-import { columns } from './ReviewsTableData';
-import { Review } from '../../model/Review';
+import { columns } from './FeedbacksTableData';
+import { Feedback } from '../../model/Feedback';
 
 interface ReviewsTableProps {
-    reviews: Review[];
-    onRowClick: (review: Review) => void;
+    reviews: Feedback[];
+    onRowClick: (review: Feedback) => void;
 }
 
-export const ReviewsTable: React.FC<ReviewsTableProps> = ({
+export const FeedbacksTable: React.FC<ReviewsTableProps> = ({
     reviews,
     onRowClick,
 }) => (
