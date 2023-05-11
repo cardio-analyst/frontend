@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { memoizedRefreshToken } from './refreshToken';
 import { getCookie } from '../../utils/cookie';
-import { ErrorEnum } from './types';
+import { ErrorGlobalEnum } from './types';
 import { baseApiUrl } from '../constants/api';
 
 axios.defaults.baseURL = baseApiUrl;
@@ -12,11 +12,7 @@ axios.interceptors.request.use(
         const accessToken = getCookie('accessToken');
 
         if (accessToken) {
-            // @ts-ignore
-            config.headers = {
-                ...config.headers,
-                Authorization: `Bearer ${accessToken}`,
-            };
+            config.headers['Authorization'] = `Bearer ${accessToken}`;
         }
 
         return config;
@@ -30,7 +26,7 @@ axios.interceptors.response.use(
         const config = error?.config;
 
         if (
-            error?.response?.data.error === ErrorEnum.AccessTokenExpired &&
+            error?.response?.data.error === ErrorGlobalEnum.AccessTokenExpired &&
             !config?.sent
         ) {
             config.sent = true;

@@ -1,7 +1,7 @@
 import { User, UserDTO } from 'model/User';
 import { apiPrivate } from 'http/api';
 
-export default class ProfileService {
+export class Api {
     public static async getInfo(): Promise<User | undefined> {
         const data = await apiPrivate.get<UserDTO>('/profile/info');
 

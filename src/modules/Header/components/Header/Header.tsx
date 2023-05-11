@@ -23,6 +23,14 @@ export const Header = () => {
             label: 'Пользователи',
             key: routes.users,
         },
+        {
+            label: 'Аналитика',
+            key: routes.analytics,
+        },
+        {
+            label: 'Отзывы',
+            key: routes.feedbacks,
+        },
     ];
 
     const onLogout = () => {

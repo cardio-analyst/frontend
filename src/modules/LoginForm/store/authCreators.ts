@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { AuthService } from '../service/AuthService';
-import { SignInCreatorProps } from '../service/types';
+import { Api } from '../api/api';
+import { SignInCreatorProps } from '../api/types';
 import { setCookie } from 'utils/cookie';
 import { ErrorApp } from '../../../http/config/types';
 import { AxiosError } from 'axios';
@@ -12,8 +12,8 @@ export const signInCreator = createAsyncThunk(
         { rejectWithValue },
     ) => {
         try {
-            const data = await AuthService.signIn(loginOrEmail, password);
-            console.log('data', data);
+            const data = await Api.signIn(loginOrEmail, password);
+
             setCookie('accessToken', data.accessToken);
             setCookie('refreshToken', data.refreshToken);
             onSuccess();
@@ -23,14 +23,5 @@ export const signInCreator = createAsyncThunk(
                 return rejectWithValue(data);
             }
         }
-    },
-);
-
-export const refreshTokenCreator = createAsyncThunk(
-    'auth/refreshToken',
-    async () => {
-        const data = await AuthService.refreshToken();
-        setCookie('accessToken', data.accessToken);
-        setCookie('refreshToken', data.refreshToken);
     },
 );

@@ -1,0 +1,11 @@
+@import "../../utils/shared";
+
+.loginFormContainer {
+  padding: 32px;
+  border: 1px solid $primary-color;
+  border-radius: 12px;
+
+  .title {
+    color: $primary-color;
+  }
+}
