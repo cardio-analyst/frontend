@@ -1,8 +1,8 @@
 import mem from 'mem';
 
 import { axiosPublic } from './axiosPublic';
-import { deleteCookie, getCookie, setCookie } from '../../utils/cookie';
-import { TokenResponse } from 'modules/LoginForm';
+import { deleteCookie, getCookie, setCookie } from 'utils/cookie';
+import { TokenResponse } from './types';
 
 const refreshTokenFn = async () => {
     const refreshToken = getCookie('refreshToken');

@@ -8,7 +8,7 @@ const { Content } = Layout;
 const PublicLayout: React.FC<PropsWithChildren> = () => {
 
     return (
-        <Layout className={styles.layout}>
+        <Layout className={styles.layoutPublic}>
             <Content>
                 <Outlet />
             </Content>
