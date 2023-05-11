@@ -24,6 +24,10 @@ export const Header = () => {
             key: routes.users,
         },
         {
+            label: 'Аналитика',
+            key: routes.analytics,
+        },
+        {
             label: 'Отзывы',
             key: routes.feedbacks,
         },

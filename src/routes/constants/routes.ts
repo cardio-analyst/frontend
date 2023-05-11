@@ -4,4 +4,5 @@ export const routes = {
     help: '/help',
     users: '/users',
     feedbacks: '/feedbacks',
+    analytics: '/analytics',
 }
