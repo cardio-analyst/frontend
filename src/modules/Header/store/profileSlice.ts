@@ -1,10 +1,10 @@
-import { User } from 'model/User';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { getProfileInfo } from './profileCreators';
+import { Profile } from '../model/profile';
 
 interface InitialStateProfile {
     isLoading: boolean;
-    profile: User | null;
+    profile: Profile | null;
 }
 
 const initialState: InitialStateProfile = {
@@ -26,7 +26,7 @@ export const profileSlice = createSlice({
         },
         [getProfileInfo.fulfilled.type]: (
             state,
-            action: PayloadAction<User>,
+            action: PayloadAction<Profile>,
         ) => {
             state.isLoading = false;
             state.profile = action.payload;

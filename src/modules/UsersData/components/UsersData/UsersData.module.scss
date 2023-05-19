@@ -1,0 +1,9 @@
+.usersData {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  .filters {
+    margin-bottom: 40px;
+  }
+}

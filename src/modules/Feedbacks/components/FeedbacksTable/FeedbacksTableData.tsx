@@ -13,7 +13,7 @@ dayjs();
 const { Paragraph, Text } = Typography;
 
 export function getColumnsData(
-    changeReadStatus: (feedbackId: string) => void,
+    changeReadStatus: (feedbackId: number) => void,
 ): ColumnsType<Feedback> {
     return [
         {
@@ -27,9 +27,9 @@ export function getColumnsData(
             key: 'userLastName',
         },
         {
-            title: 'Логин',
-            dataIndex: 'userLogin',
-            key: 'userLogin',
+            title: 'Версия',
+            key: 'version',
+            dataIndex: 'version',
         },
         {
             title: 'Комментарий',
@@ -46,13 +46,7 @@ export function getColumnsData(
             ),
         },
         {
-            title: 'Оценка',
-            key: 'mark',
-            dataIndex: 'mark',
-            render: (_, record) => <Rate disabled defaultValue={record.mark} />,
-        },
-        {
-            title: 'Дата написания',
+            title: 'Дата',
             key: 'createdAt',
             dataIndex: 'createdAt',
             render: (_, record) => (
@@ -60,16 +54,21 @@ export function getColumnsData(
             ),
         },
         {
-            title: 'Прочитано',
-            key: 'isReaded',
+            title: 'Оценка',
+            key: 'mark',
+            dataIndex: 'mark',
+            render: (_, record) => <Rate disabled defaultValue={record.mark} />,
+        },
+        {
+            title: 'Просмотрено',
+            key: 'viewed',
             align: 'center',
             render: (_, record) => (
                 <Checkbox
-                    value={false}
+                    checked={record.viewed}
                     onClick={(event) => {
                         event.stopPropagation();
-                        // TODO add feedback id.
-                        changeReadStatus('');
+                        changeReadStatus(record.id);
                     }}
                 />
             ),

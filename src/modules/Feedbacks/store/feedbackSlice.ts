@@ -1,17 +1,18 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Feedback } from '../model/Feedback';
-import {changeReadStatus, fetchFeedbacks} from './feedbackCreators';
+import { changeViewStatus, fetchFeedbacks } from './feedbackCreators';
+import { ViewStatusPayload } from './feedbackType';
 
 interface InitialStateFeedback {
     isLoading: boolean;
     feedbacks: Feedback[];
-    isChangingReadStatus: boolean;
+    isLoadingViewStatus: boolean;
 }
 
 const initialState: InitialStateFeedback = {
     isLoading: false,
     feedbacks: [],
-    isChangingReadStatus: false,
+    isLoadingViewStatus: false,
 };
 
 export const feedbackSlice = createSlice({
@@ -22,7 +23,7 @@ export const feedbackSlice = createSlice({
             state.isLoading = false;
         },
         changedReadStatus: (state) => {
-            state.isChangingReadStatus = false;
+            state.isLoadingViewStatus = false;
         },
     },
     extraReducers: {
@@ -35,8 +36,22 @@ export const feedbackSlice = createSlice({
         ) => {
             state.feedbacks = action.payload;
         },
-        [changeReadStatus.pending.type]: (state) => {
-            state.isChangingReadStatus = true;
+        [changeViewStatus.pending.type]: (state) => {
+            state.isLoadingViewStatus = true;
+        },
+        [changeViewStatus.fulfilled.type]: (
+            state,
+            action: PayloadAction<ViewStatusPayload>,
+        ) => {
+            state.feedbacks = state.feedbacks.map((feedback) => {
+                if (action.payload.feedbackId === feedback.id) {
+                    return new Feedback({
+                        ...feedback,
+                        viewed: !feedback.viewed,
+                    });
+                }
+                return feedback;
+            });
         },
     },
 });

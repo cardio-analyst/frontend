@@ -18,15 +18,12 @@ export const fetchFeedbacks = createAsyncThunk(
     },
 );
 
-export const changeReadStatus = createAsyncThunk(
+export const changeViewStatus = createAsyncThunk(
     'feedback/changeReadStatus',
-    async (feedbackId: string, { rejectWithValue, dispatch }) => {
+    async (feedbackId: number, { rejectWithValue, dispatch }) => {
         try {
-            console.log('TESTTEST');
-            // TODO add method for change read status.
-            setTimeout(() => {
-                return Promise.resolve();
-            }, 5000)
+            await Api.changeViewStatus(String(feedbackId));
+            return { feedbackId };
         } catch (error) {
             return rejectWithValue(cast<AxiosError>(error).response?.data);
         } finally {
@@ -34,4 +31,3 @@ export const changeReadStatus = createAsyncThunk(
         }
     },
 );
-
