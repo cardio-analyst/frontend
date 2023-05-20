@@ -1,4 +1,4 @@
-import { AxiosInstance } from 'axios';
+import {AxiosInstance, AxiosRequestConfig} from 'axios';
 import { IApiClient, RequestConfig } from './config/types';
 import { axiosPublic } from './config/axiosPublic';
 import { axiosPrivate } from './config/authPrivate';
@@ -31,14 +31,15 @@ class ApiClient implements IApiClient {
 
     async put<TRequest, TResponse>(
         path: string,
-        payload: TRequest,
+        payload?: TRequest,
+        config?: AxiosRequestConfig
     ): Promise<TResponse> {
-        const response = await this.client.put<TResponse>(path, payload);
+        const response = await this.client.put<TResponse>(path, payload, config);
         return response.data;
     }
 
-    async get<TResponse>(path: string): Promise<TResponse> {
-        const response = await this.client.get<TResponse>(path);
+    async get<TResponse>(path: string, config?: AxiosRequestConfig): Promise<TResponse> {
+        const response = await this.client.get<TResponse>(path, config);
         return response.data;
     }
 }

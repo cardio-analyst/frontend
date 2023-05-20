@@ -1,0 +1,17 @@
+.selectRegion {
+  margin-bottom: 20px;
+}
+
+.wrapperCharts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-column-gap: 30px;
+  grid-row-gap: 30px;
+}
+
+.emptyBlock {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 20px;
+}

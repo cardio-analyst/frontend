@@ -11,16 +11,21 @@ const options: DefaultOptionType[] = regions.map((item) => ({
 interface SelectRegionProps {
     value?: string;
     onChange?: (region: string) => void;
+    defaultValue?: DefaultOptionType;
+    wrapperClassname?: string;
 }
 
 export const SelectRegion: React.FC<SelectRegionProps> = ({
     value,
     onChange,
+    defaultValue,
+    wrapperClassname
 }) => (
     <Select
-        options={options}
+        options={defaultValue ? [defaultValue, ...options] : options}
         placeholder='Выберите регион'
         value={value}
         onChange={onChange}
+        className={wrapperClassname}
     />
 );

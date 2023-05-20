@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 5px;
+  border-radius: 8px;
+
+  .filters {
+    display: flex;
+    gap: 20px;
+  }
+
+  .applyBlock {
+    display: flex;
+    margin-top: 30px;
+  }
+}

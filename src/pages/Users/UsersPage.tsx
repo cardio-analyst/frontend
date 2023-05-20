@@ -1,10 +1,10 @@
 import React from 'react';
-import { UsersTable } from 'modules/UsersTable';
+import { UsersData } from 'modules/UsersData';
 import { PageLayout } from 'components/PageLayout';
 
 const UsersPage = () => (
     <PageLayout title='Пользователи'>
-        <UsersTable />
+        <UsersData />
     </PageLayout>
 )
 

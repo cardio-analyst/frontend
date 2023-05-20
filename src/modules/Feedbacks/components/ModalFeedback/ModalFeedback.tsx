@@ -49,9 +49,15 @@ export const ModalFeedback: React.FC<ModalReviewProps> = ({
                     <Text>{feedback?.userLogin}</Text>
                 </div>
                 <div className={styles.info}>
-                    <Title level={5}>Дата написания</Title>
+                    <Title level={5}>Дата</Title>
                     <Text>
                         {dayjs(feedback?.createdAt).format(formatCreatedDate)}
+                    </Text>
+                </div>
+                <div className={styles.info}>
+                    <Title level={5}>Версия приложения</Title>
+                    <Text>
+                        {feedback?.version}
                     </Text>
                 </div>
                 <div className={styles.info}>

@@ -3,9 +3,10 @@ import { Table } from 'antd';
 import { getColumnsData } from './FeedbacksTableData';
 import { Feedback } from '../../model/Feedback';
 import { useAppDispatch } from 'hooks/useAppDispatch';
-import { changeReadStatus } from '../../store/feedbackCreators';
+import { changeViewStatus, fetchFeedbacks } from '../../store/feedbackCreators';
 import { useAppSelector } from 'hooks/useAppSelector';
 import { feedbackSelector } from '../../store/feedbackSelector';
+import { limitData } from 'constants/limit';
 
 interface ReviewsTableProps {
     reviews: Feedback[];
@@ -17,7 +18,7 @@ export const FeedbacksTable: React.FC<ReviewsTableProps> = ({
     onRowClick,
 }) => {
     const dispatch = useAppDispatch();
-    const { isLoading, isChangingReadStatus } =
+    const { isLoading, isLoadingViewStatus, totalPages, viewed, versionOrdering, markOrdering } =
         useAppSelector(feedbackSelector);
 
     const columns = getColumnsData(onChangeReadStatus);
@@ -26,7 +27,13 @@ export const FeedbacksTable: React.FC<ReviewsTableProps> = ({
         <Table
             columns={columns}
             dataSource={reviews}
-            loading={isLoading || isChangingReadStatus}
+            loading={isLoading || isLoadingViewStatus}
+            pagination={{
+                defaultPageSize: limitData,
+                pageSize: limitData,
+                total: totalPages * limitData,
+                onChange: handleOnChangePage,
+            }}
             onRow={(record) => {
                 return {
                     onClick: () => onRowClick(record),
@@ -35,7 +42,19 @@ export const FeedbacksTable: React.FC<ReviewsTableProps> = ({
         />
     );
 
-    function onChangeReadStatus(feedbackId: string) {
-        dispatch(changeReadStatus(feedbackId));
+    function onChangeReadStatus(feedbackId: number) {
+        dispatch(changeViewStatus(feedbackId));
+    }
+
+    function handleOnChangePage(page: number, pageSize: number) {
+        dispatch(
+            fetchFeedbacks({
+                page: page,
+                limit: pageSize,
+                viewed: viewed || undefined,
+                versionOrdering: versionOrdering || undefined,
+                markOrdering: markOrdering || undefined,
+            }),
+        );
     }
 };

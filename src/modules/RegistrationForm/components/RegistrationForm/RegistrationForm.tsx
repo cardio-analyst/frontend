@@ -45,7 +45,6 @@ export const RegistrationForm = () => {
     const [initialValues, setInitialValues] = useState<InitialValuesForm>();
     const [registrationResult, setRegistrationResult] =
         useState<RegistrationResult | null>(null);
-    const [refresh, setRefresh] = useState<boolean>(false);
 
     const step = useMemo(() => steps[currentStep], [currentStep]);
 

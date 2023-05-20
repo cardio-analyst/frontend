@@ -3,13 +3,16 @@ import { Api } from '../api/api';
 import { cast } from '../../../utils/cast';
 import { AxiosError } from 'axios';
 import { feedbackSlice } from './feedbackSlice';
+import { FeedBackAllParams } from '../api/types';
 
 export const fetchFeedbacks = createAsyncThunk(
     'feedback/getAll',
-    async (_, { rejectWithValue, dispatch }) => {
+    async (
+        params: FeedBackAllParams | undefined,
+        { rejectWithValue, dispatch },
+    ) => {
         try {
-            const feedbackResponse = await Api.getFeedbackAll();
-            return feedbackResponse.feedbacks;
+            return await Api.getFeedbackAll(params);
         } catch (error) {
             return rejectWithValue(cast<AxiosError>(error).response?.data);
         } finally {
@@ -18,15 +21,12 @@ export const fetchFeedbacks = createAsyncThunk(
     },
 );
 
-export const changeReadStatus = createAsyncThunk(
+export const changeViewStatus = createAsyncThunk(
     'feedback/changeReadStatus',
-    async (feedbackId: string, { rejectWithValue, dispatch }) => {
+    async (feedbackId: number, { rejectWithValue, dispatch }) => {
         try {
-            console.log('TESTTEST');
-            // TODO add method for change read status.
-            setTimeout(() => {
-                return Promise.resolve();
-            }, 5000)
+            await Api.changeViewStatus(String(feedbackId));
+            return { feedbackId };
         } catch (error) {
             return rejectWithValue(cast<AxiosError>(error).response?.data);
         } finally {
@@ -34,4 +34,3 @@ export const changeReadStatus = createAsyncThunk(
         }
     },
 );
-

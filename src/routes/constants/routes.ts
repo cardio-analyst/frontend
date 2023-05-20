@@ -3,6 +3,7 @@ export const routes = {
     registration: '/registration',
     help: '/help',
     users: '/users',
+    user: '/users/:userId',
     feedbacks: '/feedbacks',
     analytics: '/analytics',
 }
