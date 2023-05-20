@@ -1,16 +1,17 @@
 import React from 'react';
 import { Pie } from '@ant-design/plots';
 import { Card } from 'antd';
-import { ChartDefault } from '../../types/chart';
-import { mockedDataRiskGroupChart } from '../../constants/mockedData';
-import { mockedDataRiskGroupCity } from '../../constants/mockedCityData';
+import { useAppSelector } from '../../../../hooks/useAppSelector';
+import { analyticsSelector } from '../../store/analyticsSelector';
 
-export const RiskGroupChart: React.FC<ChartDefault> = ({ region }) => {
+export const CardioAgeChart = () => {
+    const { cardiovascularAgesRangesByUsers } =
+        useAppSelector(analyticsSelector);
     const config = {
         appendPadding: 10,
-        data: region ? mockedDataRiskGroupCity : mockedDataRiskGroupChart,
+        data: cardiovascularAgesRangesByUsers || [],
         angleField: 'value',
-        colorField: 'type',
+        colorField: 'range',
         radius: 0.8,
         label: {
             type: 'outer',

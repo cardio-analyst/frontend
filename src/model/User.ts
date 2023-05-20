@@ -2,6 +2,7 @@ export interface UserDTO {
     id: number;
     firstName: string;
     lastName: string;
+    birthDate: string;
     region: string;
     login: string;
     email: string;
@@ -13,6 +14,8 @@ export class User {
     firstName: string;
 
     lastName: string;
+
+    birthDate: string;
 
     region: string;
 
@@ -28,5 +31,6 @@ export class User {
         this.region = dto.region;
         this.login = dto.login;
         this.email = dto.email;
+        this.birthDate = dto.birthDate;
     }
 }

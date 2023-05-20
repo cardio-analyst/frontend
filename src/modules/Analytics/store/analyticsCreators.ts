@@ -1,22 +1,21 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { Api } from '../api/api';
-import { userSlice } from './userSlice';
+import { analyticsSlice } from './analyticsSlice';
 import { cast } from '../../../utils/cast';
 import { AxiosError } from 'axios';
-import { UsersAllParams } from '../api/types';
 
-export const fetchUsers = createAsyncThunk(
-    'user/getAll',
+export const fetchAnalytics = createAsyncThunk(
+    'analytics/getAll',
     async (
-        params: UsersAllParams | undefined,
+        region: string | undefined,
         { rejectWithValue, dispatch },
     ) => {
         try {
-            return await Api.getUsersAll(params);
+            return await Api.getStatisticsAll(region);
         } catch (error) {
             return rejectWithValue(cast<AxiosError>(error).response?.data);
         } finally {
-            dispatch(userSlice.actions.fetchCompleted());
+            dispatch(analyticsSlice.actions.fetchCompleted());
         }
     },
 );

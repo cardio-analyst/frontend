@@ -1,13 +1,15 @@
 import React from 'react';
 import { Bar } from '@ant-design/plots';
-import { mockedDataCitiesChart } from '../../constants/mockedData';
 import { Card } from 'antd';
+import { useAppSelector } from 'hooks/useAppSelector';
+import { analyticsSelector } from '../../store/analyticsSelector';
 
 export const CitiesChart = () => {
+    const { usersByRegions } = useAppSelector(analyticsSelector);
     const config = {
-        data: mockedDataCitiesChart,
+        data: usersByRegions || [],
         xField: 'value',
-        yField: 'type',
+        yField: 'region',
         yAxis: {
             label: {
                 autoRotate: false,

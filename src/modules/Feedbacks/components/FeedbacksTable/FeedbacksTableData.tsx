@@ -57,7 +57,7 @@ export function getColumnsData(
             title: 'Оценка',
             key: 'mark',
             dataIndex: 'mark',
-            render: (_, record) => <Rate disabled defaultValue={record.mark} />,
+            render: (_, record) => <Rate disabled value={record.mark} />,
         },
         {
             title: 'Просмотрено',

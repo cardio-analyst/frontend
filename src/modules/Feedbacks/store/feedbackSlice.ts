@@ -2,17 +2,28 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { Feedback } from '../model/Feedback';
 import { changeViewStatus, fetchFeedbacks } from './feedbackCreators';
 import { ViewStatusPayload } from './feedbackType';
+import { FeedbackResponse } from '../api/types';
 
 interface InitialStateFeedback {
     isLoading: boolean;
     feedbacks: Feedback[];
     isLoadingViewStatus: boolean;
+    totalPages: number;
+    page: number;
+    viewed: undefined | string,
+    versionOrdering: undefined | string,
+    markOrdering: undefined | string,
 }
 
 const initialState: InitialStateFeedback = {
     isLoading: false,
     feedbacks: [],
     isLoadingViewStatus: false,
+    totalPages: 1,
+    page: 1,
+    viewed: undefined,
+    versionOrdering: undefined,
+    markOrdering: undefined,
 };
 
 export const feedbackSlice = createSlice({
@@ -25,6 +36,15 @@ export const feedbackSlice = createSlice({
         changedReadStatus: (state) => {
             state.isLoadingViewStatus = false;
         },
+        changedViewed: (state, action: PayloadAction<string>) => {
+            state.viewed = action.payload;
+        },
+        changedVersionOrdering: (state, action: PayloadAction<string>) => {
+            state.versionOrdering = action.payload;
+        },
+        changedMarkOrdering: (state, action: PayloadAction<string>) => {
+            state.markOrdering = action.payload;
+        },
     },
     extraReducers: {
         [fetchFeedbacks.pending.type]: (state) => {
@@ -32,9 +52,18 @@ export const feedbackSlice = createSlice({
         },
         [fetchFeedbacks.fulfilled.type]: (
             state,
-            action: PayloadAction<Feedback[]>,
+            action: PayloadAction<FeedbackResponse>,
         ) => {
-            state.feedbacks = action.payload;
+            state.feedbacks = action.payload.feedbacks;
+
+            if (!state.feedbacks.length) {
+                state.page = 1;
+                state.totalPages = 1;
+            }
+
+            if (action.payload.totalPages) {
+                state.totalPages = action.payload.totalPages;
+            }
         },
         [changeViewStatus.pending.type]: (state) => {
             state.isLoadingViewStatus = true;

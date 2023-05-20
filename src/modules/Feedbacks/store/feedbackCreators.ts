@@ -3,13 +3,16 @@ import { Api } from '../api/api';
 import { cast } from '../../../utils/cast';
 import { AxiosError } from 'axios';
 import { feedbackSlice } from './feedbackSlice';
+import { FeedBackAllParams } from '../api/types';
 
 export const fetchFeedbacks = createAsyncThunk(
     'feedback/getAll',
-    async (_, { rejectWithValue, dispatch }) => {
+    async (
+        params: FeedBackAllParams | undefined,
+        { rejectWithValue, dispatch },
+    ) => {
         try {
-            const feedbackResponse = await Api.getFeedbackAll();
-            return feedbackResponse.feedbacks;
+            return await Api.getFeedbackAll(params);
         } catch (error) {
             return rejectWithValue(cast<AxiosError>(error).response?.data);
         } finally {

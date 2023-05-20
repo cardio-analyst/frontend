@@ -1,14 +1,14 @@
 import React from 'react';
 import { Column } from '@ant-design/plots';
-import { ChartDefault } from '../../types/chart';
-import { mockedDataPressure } from '../../constants/mockedData';
-import { mockedDataPressureCity } from '../../constants/mockedCityData';
 import { Card } from 'antd';
+import { useAppSelector } from 'hooks/useAppSelector';
+import { analyticsSelector } from '../../store/analyticsSelector';
 
-export const PressureChart: React.FC<ChartDefault> = ({ region }) => {
+export const PressureChart = () => {
+    const { sbpByUsers } = useAppSelector(analyticsSelector);
     const config = {
-        data: region ? mockedDataPressureCity : mockedDataPressure,
-        xField: 'type',
+        data: sbpByUsers || [],
+        xField: 'range',
         yField: 'value',
     };
     return (

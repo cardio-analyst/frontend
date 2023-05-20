@@ -7,7 +7,7 @@ import { useAppDispatch } from 'hooks/useAppDispatch';
 import { columns } from './UsersTableData';
 import { useNavigate } from 'react-router-dom';
 import { routes } from 'routes';
-import { limitData } from '../../constants/api';
+import { limitData } from 'constants/limit';
 
 export const UsersTable: React.FC = () => {
     const dispatch = useAppDispatch();

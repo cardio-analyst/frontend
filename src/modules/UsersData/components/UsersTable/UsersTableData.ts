@@ -15,6 +15,11 @@ export const columns = [
         key: 'region',
     },
     {
+        title: 'Дата рождения',
+        dataIndex: 'birthDate',
+        key: 'birthDate',
+    },
+    {
         title: 'Логин',
         dataIndex: 'login',
         key: 'login',

@@ -4,6 +4,7 @@ import { userReducer } from 'modules/UsersData';
 import { profileReducer } from 'modules/Header';
 import { registrationReducer } from 'modules/RegistrationForm';
 import { feedbackReducer } from 'modules/Feedbacks';
+import { analyticsReducer } from 'modules/Analytics';
 
 export const rootReducer = combineReducers({
     authReducer: authReducer,
@@ -11,4 +12,5 @@ export const rootReducer = combineReducers({
     profileReducer: profileReducer,
     registrationReducer: registrationReducer,
     feedbackReducer: feedbackReducer,
+    analyticsReducer: analyticsReducer,
 });

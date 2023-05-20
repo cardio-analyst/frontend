@@ -1,16 +1,16 @@
 import React from 'react';
 import { Bar } from '@ant-design/plots';
 import { Card } from 'antd';
-import { ChartDefault } from '../../types/chart';
-import { mockedDataDiseasesChart } from '../../constants/mockedData';
-import { mockedDiseasesChartCity } from '../../constants/mockedCityData';
+import {useAppSelector} from '../../../../hooks/useAppSelector';
+import {analyticsSelector} from '../../store/analyticsSelector';
 
-export const DiseasesChart: React.FC<ChartDefault> = ({ region }) => {
+export const DiseasesChart = () => {
+    const { diseasesByUsers } = useAppSelector(analyticsSelector);
     const config = {
-        data: region ? mockedDiseasesChartCity : mockedDataDiseasesChart,
+        data: diseasesByUsers || [],
         xField: 'value',
-        yField: 'type',
-        seriesField: 'type',
+        yField: 'disease',
+        seriesField: 'disease',
     };
     return (
         <Card title='Статистика по заболеваниям'>

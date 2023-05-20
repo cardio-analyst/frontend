@@ -1,1 +1,1 @@
-export const formatCreatedDate = 'DD.MM.YYYY HH:mm:ss';
+export const formatCreatedDate = 'DD.MM.YYYY HH:mm';
